@@ -4,6 +4,7 @@ use App\Http\Controllers\AISearchController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectEmbeddingController;
 use App\Http\Controllers\ProjectImageController;
+use App\Http\Controllers\PromptTemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard')->name('home');
@@ -17,7 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('projects/{project}/embedding', ProjectEmbeddingController::class)->name('projects.embedding.generate');
     Route::get('ai-search', [AISearchController::class, 'index'])->name('ai-search.index');
     Route::inertia('proposal-writer', 'proposal-writer/index')->name('proposal-writer.index');
-    Route::inertia('prompt-templates', 'prompt-templates/index')->name('prompt-templates.index');
+    Route::resource('prompt-templates', PromptTemplateController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::inertia('history', 'history/index')->name('history.index');
 });
 

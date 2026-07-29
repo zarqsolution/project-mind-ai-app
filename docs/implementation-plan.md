@@ -67,11 +67,13 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] AI Search page (search box with spinner, SRS example query chips, result cards with title / % match badge / reason / thumbnail / Open Project button)
 - [x] Feature tests (`AISearchTest` — 8 tests using deterministic `Embeddings::fake()` vectors: ranking, exclusion of unembedded projects, top-5 limit, reasons, hidden embeddings, guests)
 
-## Phase 7 — Prompt Templates
+## Phase 7 — Prompt Templates ✅
 
-- [ ] `prompt_templates` migration (name, prompt, is_default)
-- [ ] CRUD + only one default enforced (`PromptTemplateService`)
-- [ ] Tests
+- [x] `prompt_templates` migration (name, prompt, is_default) + `PromptTemplate` model/factory (`default()` state)
+- [x] `PromptTemplateService`: single default enforced — first template auto-defaults, marking default unsets others, deleting the default promotes the most recently updated template
+- [x] Resource controller (index/store/update/destroy) + Form Requests, thin controller with toasts
+- [x] Prompt Templates page: card list (default first, Default badge), create/edit dialogs (name, prompt, set-as-default checkbox), Make Default quick action, delete confirmation
+- [x] Feature tests (`PromptTemplateTest` — 10 tests covering listing order, CRUD, default rules, validation, guests)
 
 ## Phase 8 — Proposal Writer
 
