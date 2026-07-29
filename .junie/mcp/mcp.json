@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/usr/local/Cellar/php/8.5.6/bin/php",
+            "args": [
+                "/Users/kpklaptops/Code/project-mind-ai-app/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
