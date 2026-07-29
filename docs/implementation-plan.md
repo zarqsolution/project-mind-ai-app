@@ -75,11 +75,13 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Prompt Templates page: card list (default first, Default badge), create/edit dialogs (name, prompt, set-as-default checkbox), Make Default quick action, delete confirmation
 - [x] Feature tests (`PromptTemplateTest` — 10 tests covering listing order, CRUD, default rules, validation, guests)
 
-## Phase 8 — Proposal Writer
+## Phase 8 — Proposal Writer ✅
 
-- [ ] `ProposalService` (portfolio search → top projects → template + job description → LLM)
-- [ ] Page: job description textarea (left) / generated proposal (right)
-- [ ] Tests (AI faked)
+- [x] `ProposalWriter` agent (`app/Ai/Agents`, Anthropic provider, proposal-writing instructions)
+- [x] `ProposalService`: builds prompt from default template (fallback prompt if none) + job description + top 3 AI-search projects, returns proposal + used prompt (ready for Phase 9 history)
+- [x] `ProposalController` (index/store) + `GenerateProposalRequest`; proposal flashed via session to the page
+- [x] Page: job description textarea (left) / generated proposal with copy button (right), spinner while generating
+- [x] Feature tests (`ProposalWriterTest` — 8 tests with `ProposalWriter::fake()` + `Embeddings::fake()`: generation, prompt contents, fallback, no-match note, validation, guests)
 
 ## Phase 9 — Prompt History
 
