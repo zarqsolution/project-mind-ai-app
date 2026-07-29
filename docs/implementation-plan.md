@@ -51,13 +51,14 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Rendered rich description on details page via shared `.rich-text` styles (app.css); list excerpt strips HTML tags
 - [x] Factory generates HTML descriptions; template test updated; full suite + Larastan + tsc + build all green
 
-## Phase 5 — Embedding Generation
+## Phase 5 — Embedding Generation ✅
 
-- [ ] Laravel AI SDK setup (isolated `EmbeddingService`)
-- [ ] Queued embedding regeneration when title/description changes (includes image titles)
-- [ ] Store embedding on `projects.embedding`
-- [ ] "Generate Embedding" button on project details
-- [ ] Tests (AI provider faked)
+- [x] Laravel AI SDK (`laravel/ai`) installed; provider config-driven (`ai.default_for_embeddings`, defaults to OpenAI — set `OPENAI_API_KEY`; Anthropic does not support embeddings)
+- [x] Isolated `EmbeddingService` (builds input from title + plain-text description + image titles, stores vector)
+- [x] Queued `GenerateProjectEmbedding` job dispatched on create, title/description change, and image add/delete
+- [x] Embedding stored on `projects.embedding` (JSON, hidden from serialization; `has_embedding` appended)
+- [x] "Generate Embedding" button + status badge on project details
+- [x] Feature tests (`ProjectEmbeddingTest` — 8 tests, `Embeddings::fake()` / `Queue::fake()`)
 
 ## Phase 6 — AI Search
 

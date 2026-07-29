@@ -4,8 +4,11 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Ai\Embeddings;
 
 beforeEach(function () {
+    Embeddings::fake();
+
     $this->actingAs(User::factory()->create());
 });
 

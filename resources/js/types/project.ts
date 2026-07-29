@@ -16,6 +16,7 @@ export type Project = {
     thumbnail: string | null;
     thumbnail_url: string | null;
     description: string;
+    has_embedding: boolean;
     created_at: string;
     updated_at: string;
     images?: ProjectImage[];

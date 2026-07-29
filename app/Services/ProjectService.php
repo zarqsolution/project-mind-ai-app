@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\GenerateProjectEmbedding;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -75,12 +76,16 @@ HTML;
      */
     public function create(array $data, ?UploadedFile $thumbnail = null): Project
     {
-        return Project::query()->create([
+        $project = Project::query()->create([
             'title' => $data['title'],
             'slug' => $this->generateUniqueSlug($data['title']),
             'description' => $data['description'],
             'thumbnail' => $thumbnail ? $this->storeThumbnail($thumbnail) : null,
         ]);
+
+        GenerateProjectEmbedding::dispatch($project);
+
+        return $project;
     }
 
     /**
@@ -107,6 +112,10 @@ HTML;
 
         $project->update($attributes);
 
+        if ($project->wasChanged(['title', 'description'])) {
+            GenerateProjectEmbedding::dispatch($project);
+        }
+
         return $project->refresh();
     }
 
@@ -127,11 +136,15 @@ HTML;
      */
     public function addImage(Project $project, string $title, UploadedFile $image): ProjectImage
     {
-        return $project->images()->create([
+        $projectImage = $project->images()->create([
             'title' => $title,
             'image' => $this->storePublicFile($image, 'projects/images'),
             'sort_order' => ((int) $project->images()->max('sort_order')) + 1,
         ]);
+
+        GenerateProjectEmbedding::dispatch($project->unsetRelation('images'));
+
+        return $projectImage;
     }
 
     /**
@@ -142,6 +155,8 @@ HTML;
         Storage::disk('public')->delete($image->image);
 
         $image->delete();
+
+        GenerateProjectEmbedding::dispatch($image->project->unsetRelation('images'));
     }
 
     /**

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string|null $thumbnail_url
+ * @property-read bool $has_embedding
  * @property-read Collection<int, ProjectImage> $images
  */
 #[Fillable(['title', 'slug', 'thumbnail', 'description', 'embedding'])]
@@ -35,7 +36,14 @@ class Project extends Model
      *
      * @var list<string>
      */
-    protected $appends = ['thumbnail_url'];
+    protected $appends = ['thumbnail_url', 'has_embedding'];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = ['embedding'];
 
     /**
      * Use the slug for route model binding.
@@ -66,6 +74,18 @@ class Project extends Model
             get: fn (): ?string => $this->thumbnail
                 ? Storage::disk('public')->url($this->thumbnail)
                 : null,
+        );
+    }
+
+    /**
+     * Determine if the project has a stored embedding.
+     *
+     * @return Attribute<bool, never>
+     */
+    protected function hasEmbedding(): Attribute
+    {
+        return Attribute::make(
+            get: fn (): bool => $this->embedding !== null,
         );
     }
 

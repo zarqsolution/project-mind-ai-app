@@ -1,7 +1,9 @@
 import { Form, Head, Link, usePage } from '@inertiajs/react';
-import { ImageIcon, Pencil, Trash2 } from 'lucide-react';
+import { ImageIcon, Pencil, Sparkles, Trash2 } from 'lucide-react';
 import ProjectController from '@/actions/App/Http/Controllers/ProjectController';
+import ProjectEmbeddingController from '@/actions/App/Http/Controllers/ProjectEmbeddingController';
 import { ProjectImageGallery } from '@/components/project-image-gallery';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -33,13 +35,51 @@ export default function ProjectsShow() {
                             {project.title}
                         </h1>
 
-                        <p className="text-sm text-muted-foreground">
-                            Last updated{' '}
-                            {new Date(project.updated_at).toLocaleDateString()}
-                        </p>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <span>
+                                Last updated{' '}
+                                {new Date(
+                                    project.updated_at,
+                                ).toLocaleDateString()}
+                            </span>
+
+                            <Badge
+                                variant={
+                                    project.has_embedding
+                                        ? 'secondary'
+                                        : 'outline'
+                                }
+                            >
+                                <Sparkles />
+                                {project.has_embedding
+                                    ? 'Embedding ready'
+                                    : 'No embedding'}
+                            </Badge>
+                        </div>
                     </div>
 
                     <div className="flex items-center gap-2">
+                        <Form
+                            {...ProjectEmbeddingController.form(project.slug)}
+                            options={{ preserveScroll: true }}
+                        >
+                            {({ processing }) => (
+                                <Button
+                                    variant="outline"
+                                    disabled={processing}
+                                    asChild
+                                >
+                                    <button
+                                        type="submit"
+                                        data-test="generate-embedding-button"
+                                    >
+                                        <Sparkles />
+                                        Generate Embedding
+                                    </button>
+                                </Button>
+                            )}
+                        </Form>
+
                         <Button asChild variant="outline">
                             <Link href={edit(project.slug)}>
                                 <Pencil />
