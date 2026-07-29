@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AISearchController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectEmbeddingController;
 use App\Http\Controllers\ProjectImageController;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/dashboard')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectController::class);
     Route::post('projects/{project}/images', [ProjectImageController::class, 'store'])->name('projects.images.store');
     Route::put('projects/{project}/images/reorder', [ProjectImageController::class, 'reorder'])->name('projects.images.reorder');

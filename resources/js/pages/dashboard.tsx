@@ -21,9 +21,30 @@ import {
 import { dashboard } from '@/routes';
 import { index as aiSearch } from '@/routes/ai-search';
 import { index as history } from '@/routes/history';
-import { index as projects } from '@/routes/projects';
+import { index as projects, show as showProject } from '@/routes/projects';
 import { index as promptTemplates } from '@/routes/prompt-templates';
 import { index as proposalWriter } from '@/routes/proposal-writer';
+import type { Project, PromptHistoryEntry } from '@/types';
+
+type PageProps = {
+    stats: {
+        projects: number;
+        images: number;
+        promptTemplates: number;
+        proposals: number;
+    };
+    recentProjects: Project[];
+    recentProposals: PromptHistoryEntry[];
+};
+
+function excerpt(text: string, length = 100): string {
+    const plain = text
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    return plain.length > length ? `${plain.slice(0, length)}…` : plain;
+}
 
 type QuickAction = {
     title: string;
@@ -55,21 +76,37 @@ const quickActions: QuickAction[] = [
     },
 ];
 
-const stats = [
-    { title: 'Projects', value: 0, icon: FolderGit2, href: projects() },
-    { title: 'Images', value: 0, icon: ImageIcon, href: projects() },
-    {
-        title: 'Prompt Templates',
-        value: 0,
-        icon: NotebookPen,
-        href: promptTemplates(),
-    },
-    { title: 'Proposals', value: 0, icon: History, href: history() },
-];
-
 export default function Dashboard() {
-    const { auth } = usePage().props;
+    const { auth, stats, recentProjects, recentProposals } =
+        usePage<PageProps>().props;
     const firstName = auth.user?.name?.split(' ')[0] ?? 'there';
+
+    const statCards = [
+        {
+            title: 'Projects',
+            value: stats.projects,
+            icon: FolderGit2,
+            href: projects(),
+        },
+        {
+            title: 'Images',
+            value: stats.images,
+            icon: ImageIcon,
+            href: projects(),
+        },
+        {
+            title: 'Prompt Templates',
+            value: stats.promptTemplates,
+            icon: NotebookPen,
+            href: promptTemplates(),
+        },
+        {
+            title: 'Proposals',
+            value: stats.proposals,
+            icon: History,
+            href: history(),
+        },
+    ];
 
     return (
         <>
@@ -127,7 +164,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {stats.map((stat) => (
+                    {statCards.map((stat) => (
                         <Link key={stat.title} href={stat.href} prefetch>
                             <Card className="transition-all hover:border-primary/40">
                                 <CardContent className="flex items-center gap-4">
@@ -156,21 +193,59 @@ export default function Dashboard() {
                                 Your latest portfolio entries
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="flex flex-1 flex-col items-center justify-center gap-3 py-10 text-center">
-                            <div className="flex size-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
-                                <FolderGit2 className="size-6" />
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                                No projects yet. Add your first project to start
-                                building your portfolio.
-                            </p>
-                            <Button asChild size="sm">
-                                <Link href={projects()} prefetch>
-                                    <Plus className="size-4" />
-                                    Add Project
-                                </Link>
-                            </Button>
-                        </CardContent>
+                        {recentProjects.length === 0 ? (
+                            <CardContent className="flex flex-1 flex-col items-center justify-center gap-3 py-10 text-center">
+                                <div className="flex size-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
+                                    <FolderGit2 className="size-6" />
+                                </div>
+                                <p className="text-sm text-muted-foreground">
+                                    No projects yet. Add your first project to
+                                    start building your portfolio.
+                                </p>
+                                <Button asChild size="sm">
+                                    <Link href={projects()} prefetch>
+                                        <Plus className="size-4" />
+                                        Add Project
+                                    </Link>
+                                </Button>
+                            </CardContent>
+                        ) : (
+                            <CardContent className="space-y-1">
+                                {recentProjects.map((project) => (
+                                    <Link
+                                        key={project.id}
+                                        href={showProject(project.slug)}
+                                        prefetch
+                                        className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-accent"
+                                        data-test={`recent-project-${project.id}`}
+                                    >
+                                        <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-muted">
+                                            {project.thumbnail_url ? (
+                                                <img
+                                                    src={project.thumbnail_url}
+                                                    alt={project.title}
+                                                    className="size-full object-cover"
+                                                />
+                                            ) : (
+                                                <ImageIcon className="size-4 text-muted-foreground/50" />
+                                            )}
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="truncate text-sm font-medium">
+                                                {project.title}
+                                            </p>
+                                            <p className="text-xs text-muted-foreground">
+                                                Updated{' '}
+                                                {new Date(
+                                                    project.updated_at,
+                                                ).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                        <ArrowRight className="size-4 shrink-0 text-muted-foreground" />
+                                    </Link>
+                                ))}
+                            </CardContent>
+                        )}
                     </Card>
 
                     <Card>
@@ -180,21 +255,62 @@ export default function Dashboard() {
                                 Previously generated proposals
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="flex flex-1 flex-col items-center justify-center gap-3 py-10 text-center">
-                            <div className="flex size-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
-                                <PenLine className="size-6" />
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                                No proposals yet. Paste a job description and
-                                let AI write the first one.
-                            </p>
-                            <Button asChild size="sm" variant="outline">
-                                <Link href={proposalWriter()} prefetch>
-                                    <PenLine className="size-4" />
-                                    Write Proposal
-                                </Link>
-                            </Button>
-                        </CardContent>
+                        {recentProposals.length === 0 ? (
+                            <CardContent className="flex flex-1 flex-col items-center justify-center gap-3 py-10 text-center">
+                                <div className="flex size-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
+                                    <PenLine className="size-6" />
+                                </div>
+                                <p className="text-sm text-muted-foreground">
+                                    No proposals yet. Paste a job description
+                                    and let AI write the first one.
+                                </p>
+                                <Button asChild size="sm" variant="outline">
+                                    <Link href={proposalWriter()} prefetch>
+                                        <PenLine className="size-4" />
+                                        Write Proposal
+                                    </Link>
+                                </Button>
+                            </CardContent>
+                        ) : (
+                            <CardContent className="space-y-1">
+                                {recentProposals.map((proposal) => (
+                                    <Link
+                                        key={proposal.id}
+                                        href={history()}
+                                        prefetch
+                                        className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-accent"
+                                        data-test={`recent-proposal-${proposal.id}`}
+                                    >
+                                        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                                            <PenLine className="size-4" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="truncate text-sm font-medium">
+                                                {excerpt(
+                                                    proposal.job_description,
+                                                )}
+                                            </p>
+                                            <p className="text-xs text-muted-foreground">
+                                                {proposal.created_at
+                                                    ? new Date(
+                                                          proposal.created_at,
+                                                      ).toLocaleString(
+                                                          undefined,
+                                                          {
+                                                              dateStyle:
+                                                                  'medium',
+                                                              timeStyle:
+                                                                  'short',
+                                                          },
+                                                      )
+                                                    : '—'}
+                                            </p>
+                                        </div>
+                                        <ArrowRight className="size-4 shrink-0 text-muted-foreground" />
+                                    </Link>
+                                ))}
+                            </CardContent>
+                        )}
                     </Card>
                 </div>
             </div>

@@ -91,11 +91,12 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] History page: paginated cards (date, job/proposal excerpts), View dialog (job description, used prompt, proposal), Reuse link (prefills Proposal Writer via `job_description` query param), delete confirmation
 - [x] Feature tests (`PromptHistoryTest` — 6 tests: auto-save, newest-first listing, pagination, delete, reuse prefill, guests)
 
-## Phase 10 — Dashboard Polish
+## Phase 10 — Dashboard Polish ✅
 
-- [ ] Stat cards: projects, images, prompt templates, generated proposals
-- [ ] Recent projects, recent searches
-- [ ] Tests
+- [x] `DashboardService::overview()` + `DashboardController@index` replacing the static dashboard route
+- [x] Stat cards with live counts: projects, images, prompt templates, generated proposals
+- [x] Recent Projects (5 most recently updated, thumbnail + updated date, links to project) and Recent Proposals (5 latest history entries, job excerpt + date, links to History) — searches aren't persisted (5-table limit), so recent prompt history stands in for "recent searches"
+- [x] Feature tests (`DashboardTest` — 6 tests: stat counts, recent projects order/limit/hidden embedding, recent proposals order/limit, empty state, guests)
 
 ---
 
