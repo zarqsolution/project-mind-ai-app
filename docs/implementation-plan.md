@@ -60,11 +60,12 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] "Generate Embedding" button + status badge on project details
 - [x] Feature tests (`ProjectEmbeddingTest` — 8 tests, `Embeddings::fake()` / `Queue::fake()`)
 
-## Phase 6 — AI Search
+## Phase 6 — AI Search ✅
 
-- [ ] `AISearchService` (query embedding → cosine similarity → best matches)
-- [ ] AI Search page (search box, example queries, results with title/score/reason/thumbnail/open button)
-- [ ] Tests
+- [x] `AISearchService` (query embedding → cosine similarity → top 5 matches with rounded score + keyword-based reason, semantic fallback message)
+- [x] `AISearchController@index` (thin controller; `query` request param, `results` null until a query is submitted)
+- [x] AI Search page (search box with spinner, SRS example query chips, result cards with title / % match badge / reason / thumbnail / Open Project button)
+- [x] Feature tests (`AISearchTest` — 8 tests using deterministic `Embeddings::fake()` vectors: ranking, exclusion of unembedded projects, top-5 limit, reasons, hidden embeddings, guests)
 
 ## Phase 7 — Prompt Templates
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AISearchController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectEmbeddingController;
 use App\Http\Controllers\ProjectImageController;
@@ -14,7 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('projects/{project}/images/reorder', [ProjectImageController::class, 'reorder'])->name('projects.images.reorder');
     Route::delete('projects/{project}/images/{image}', [ProjectImageController::class, 'destroy'])->scopeBindings()->name('projects.images.destroy');
     Route::post('projects/{project}/embedding', ProjectEmbeddingController::class)->name('projects.embedding.generate');
-    Route::inertia('ai-search', 'ai-search/index')->name('ai-search.index');
+    Route::get('ai-search', [AISearchController::class, 'index'])->name('ai-search.index');
     Route::inertia('proposal-writer', 'proposal-writer/index')->name('proposal-writer.index');
     Route::inertia('prompt-templates', 'prompt-templates/index')->name('prompt-templates.index');
     Route::inertia('history', 'history/index')->name('history.index');
