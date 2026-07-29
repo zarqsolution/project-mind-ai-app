@@ -2,13 +2,15 @@
 
 namespace App\Ai\Agents;
 
+use Laravel\Ai\Attributes\Model;
 use Laravel\Ai\Attributes\Provider;
 use Laravel\Ai\Contracts\Agent;
 use Laravel\Ai\Enums\Lab;
 use Laravel\Ai\Promptable;
 use Stringable;
 
-#[Provider(Lab::Anthropic)]
+#[Provider(Lab::OpenRouter)]
+#[Model('cohere/north-mini-code:free')]
 class ProposalWriter implements Agent
 {
     use Promptable;

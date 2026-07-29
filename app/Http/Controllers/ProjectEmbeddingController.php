@@ -10,13 +10,13 @@ use Inertia\Inertia;
 class ProjectEmbeddingController extends Controller
 {
     /**
-     * Queue embedding generation for the given project.
+     * Generate the embedding for the given project immediately.
      */
     public function __invoke(Project $project): RedirectResponse
     {
-        GenerateProjectEmbedding::dispatch($project);
+        GenerateProjectEmbedding::dispatchSync($project);
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => __('Embedding generation started.')]);
+        Inertia::flash('toast', ['type' => 'success', 'message' => __('Embedding generated.')]);
 
         return back();
     }

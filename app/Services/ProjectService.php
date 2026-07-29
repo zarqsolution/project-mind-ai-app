@@ -83,7 +83,7 @@ HTML;
             'thumbnail' => $thumbnail ? $this->storeThumbnail($thumbnail) : null,
         ]);
 
-        GenerateProjectEmbedding::dispatch($project);
+        GenerateProjectEmbedding::dispatchSync($project);
 
         return $project;
     }
@@ -113,7 +113,7 @@ HTML;
         $project->update($attributes);
 
         if ($project->wasChanged(['title', 'description'])) {
-            GenerateProjectEmbedding::dispatch($project);
+            GenerateProjectEmbedding::dispatchSync($project);
         }
 
         return $project->refresh();
@@ -142,7 +142,7 @@ HTML;
             'sort_order' => ((int) $project->images()->max('sort_order')) + 1,
         ]);
 
-        GenerateProjectEmbedding::dispatch($project->unsetRelation('images'));
+        GenerateProjectEmbedding::dispatchSync($project->unsetRelation('images'));
 
         return $projectImage;
     }
@@ -156,7 +156,7 @@ HTML;
 
         $image->delete();
 
-        GenerateProjectEmbedding::dispatch($image->project->unsetRelation('images'));
+        GenerateProjectEmbedding::dispatchSync($image->project->unsetRelation('images'));
     }
 
     /**

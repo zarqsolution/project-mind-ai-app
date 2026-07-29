@@ -1,12 +1,10 @@
 <?php
 
-use App\Jobs\GenerateProjectEmbedding;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Models\User;
 use App\Services\EmbeddingService;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Ai\Embeddings;
 
@@ -59,8 +57,8 @@ test('creating a project generates an embedding', function () {
     expect($project->embedding)->toBeArray()->not->toBeEmpty();
 });
 
-test('updating the title or description queues an embedding regeneration', function () {
-    Queue::fake();
+test('updating the title or description regenerates the embedding', function () {
+    Embeddings::fake();
 
     $project = Project::factory()->create();
 
@@ -69,11 +67,13 @@ test('updating the title or description queues an embedding regeneration', funct
         'description' => '<p>Updated description.</p>',
     ])->assertRedirect();
 
-    Queue::assertPushed(GenerateProjectEmbedding::class, fn ($job) => $job->project->is($project));
+    expect($project->refresh()->embedding)->toBeArray()->not->toBeEmpty();
+
+    Embeddings::assertGenerated(fn ($prompt) => $prompt->contains('Updated description.'));
 });
 
-test('updating without changing the title or description does not queue a regeneration', function () {
-    Queue::fake();
+test('updating without changing the title or description does not regenerate the embedding', function () {
+    Embeddings::fake();
 
     $project = Project::factory()->create();
 
@@ -82,11 +82,11 @@ test('updating without changing the title or description does not queue a regene
         'description' => $project->description,
     ])->assertRedirect();
 
-    Queue::assertNotPushed(GenerateProjectEmbedding::class);
+    Embeddings::assertNothingGenerated();
 });
 
-test('adding and deleting images queue an embedding regeneration', function () {
-    Queue::fake();
+test('adding and deleting images regenerate the embedding', function () {
+    Embeddings::fake();
     Storage::fake('public');
 
     $project = Project::factory()->create();
@@ -96,14 +96,16 @@ test('adding and deleting images queue an embedding regeneration', function () {
         'image' => UploadedFile::fake()->image('dashboard.png'),
     ])->assertRedirect();
 
-    Queue::assertPushed(GenerateProjectEmbedding::class, 1);
+    Embeddings::assertGenerated(fn ($prompt) => $prompt->contains('Dashboard view'));
 
     $image = $project->images()->firstOrFail();
 
     $this->delete(route('projects.images.destroy', ['project' => $project, 'image' => $image]))
         ->assertRedirect();
 
-    Queue::assertPushed(GenerateProjectEmbedding::class, 2);
+    Embeddings::assertGenerated(fn ($prompt) => ! $prompt->contains('Dashboard view'));
+
+    expect($project->refresh()->embedding)->toBeArray()->not->toBeEmpty();
 });
 
 test('the raw embedding is hidden but its status is shared with the page', function () {
@@ -127,3 +129,17 @@ test('guests cannot generate embeddings', function () {
     $this->post(route('projects.embedding.generate', $project))
         ->assertRedirect(route('login'));
 });
+
+test('the generate embedding button works against the real provider', function () {
+    $project = Project::factory()->create([
+        'title' => 'FleetTrack Logistics Platform',
+        'description' => '<p>Real-time GPS tracking and dispatch for courier fleets.</p>',
+    ]);
+
+    $this->post(route('projects.embedding.generate', $project))
+        ->assertRedirect();
+
+    expect($project->refresh()->embedding)
+        ->toBeArray()
+        ->toHaveCount(1536);
+})->skip('Live API test — verified passing on 2026-07-29. Remove this skip to re-run against the real provider.');
