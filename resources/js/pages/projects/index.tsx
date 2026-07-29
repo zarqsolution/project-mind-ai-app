@@ -18,7 +18,7 @@ type PageProps = {
 
 function excerpt(text: string, length = 140): string {
     const plain = text
-        .replace(/[#*_`>[\]()!-]/g, ' ')
+        .replace(/<[^>]*>/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
 

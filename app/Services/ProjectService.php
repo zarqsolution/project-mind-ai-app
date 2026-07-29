@@ -12,64 +12,46 @@ use RuntimeException;
 
 class ProjectService
 {
-    public const string DESCRIPTION_TEMPLATE = <<<'MARKDOWN'
-# Overview
-
-Describe the project.
-
----
-
-# Client
-
----
-
-# Problem
-
----
-
-# Solution
-
----
-
-# My Role
-
----
-
-# Technologies
-
----
-
-# Features
-
----
-
-# Integrations
-
----
-
-# Challenges
-
----
-
-# Performance Optimizations
-
----
-
-# Screens
-
-Describe important screenshots.
-
----
-
-# Proposal Notes
-
-Mention what AI should highlight in proposals.
-
----
-
-# Keywords
-
-MARKDOWN;
+    public const string DESCRIPTION_TEMPLATE = <<<'HTML'
+<h1>Overview</h1>
+<p>Describe the project.</p>
+<hr>
+<h1>Client</h1>
+<p></p>
+<hr>
+<h1>Problem</h1>
+<p></p>
+<hr>
+<h1>Solution</h1>
+<p></p>
+<hr>
+<h1>My Role</h1>
+<p></p>
+<hr>
+<h1>Technologies</h1>
+<p></p>
+<hr>
+<h1>Features</h1>
+<p></p>
+<hr>
+<h1>Integrations</h1>
+<p></p>
+<hr>
+<h1>Challenges</h1>
+<p></p>
+<hr>
+<h1>Performance Optimizations</h1>
+<p></p>
+<hr>
+<h1>Screens</h1>
+<p>Describe important screenshots.</p>
+<hr>
+<h1>Proposal Notes</h1>
+<p>Mention what AI should highlight in proposals.</p>
+<hr>
+<h1>Keywords</h1>
+<p></p>
+HTML;
 
     /**
      * Paginate projects, optionally filtered by a title search.

@@ -1,9 +1,9 @@
 import { ImageIcon } from 'lucide-react';
 import { useState } from 'react';
 import InputError from '@/components/input-error';
+import { RichTextEditor } from '@/components/rich-text-editor';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 
 type ProjectFormFieldsProps = {
     errors: Record<string, string>;
@@ -87,21 +87,15 @@ export function ProjectFormFields({
             </div>
 
             <div className="grid gap-2">
-                <Label htmlFor="description">Description</Label>
+                <Label>Description</Label>
 
-                <Textarea
-                    id="description"
+                <RichTextEditor
                     name="description"
                     defaultValue={defaultDescription}
-                    required
-                    rows={22}
-                    className="min-h-96 font-mono text-sm leading-relaxed"
-                    data-test="project-description-input"
                 />
 
                 <p className="text-xs text-muted-foreground">
-                    Markdown supported. Follow the template sections for the
-                    best AI search results.
+                    Follow the template sections for the best AI search results.
                 </p>
 
                 <InputError message={errors.description} />

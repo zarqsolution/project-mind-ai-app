@@ -24,7 +24,9 @@ class ProjectFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'thumbnail' => null,
-            'description' => fake()->paragraphs(3, true),
+            'description' => collect(range(1, 3))
+                ->map(fn (): string => '<p>'.fake()->paragraph().'</p>')
+                ->implode(''),
             'embedding' => null,
         ];
     }

@@ -120,9 +120,12 @@ export default function ProjectsShow() {
                 </div>
 
                 <div className="rounded-xl border bg-card p-6">
-                    <div className="text-sm leading-relaxed whitespace-pre-wrap">
-                        {project.description}
-                    </div>
+                    <div
+                        className="rich-text"
+                        dangerouslySetInnerHTML={{
+                            __html: project.description,
+                        }}
+                    />
                 </div>
 
                 <ProjectImageGallery project={project} />

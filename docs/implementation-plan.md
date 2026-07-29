@@ -44,11 +44,12 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Feature tests (`ProjectImageTest` — 10 tests covering upload, append order, validation, ordered display, reorder, delete, scoped bindings, cascade, count, guests)
 - [x] Larastan now passes clean (fixed factory faker method, typed service payloads, storage return types, starter-kit `withTwoFactor` stub)
 
-## Phase 4 — WYSIWYG Editor
+## Phase 4 — WYSIWYG Editor ✅
 
-- [ ] TipTap editor integrated into create/edit pages
-- [ ] Preload new projects with the SRS description template (section 7)
-- [ ] Rendered rich description on details page
+- [x] TipTap editor integrated into create/edit pages (`RichTextEditor` component: toolbar with bold/italic/strike/code, H1–H3, lists, blockquote, code block, hr, undo/redo; hidden input keeps Inertia `<Form>` serialization working)
+- [x] Descriptions now stored as HTML; SRS template (section 7) converted to HTML and preloaded on create
+- [x] Rendered rich description on details page via shared `.rich-text` styles (app.css); list excerpt strips HTML tags
+- [x] Factory generates HTML descriptions; template test updated; full suite + Larastan + tsc + build all green
 
 ## Phase 5 — Embedding Generation
 

@@ -39,7 +39,7 @@ test('create page provides the description template', function () {
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->component('projects/create')
-            ->where('descriptionTemplate', fn ($template) => str_contains((string) $template, '# Overview')));
+            ->where('descriptionTemplate', fn ($template) => str_contains((string) $template, '<h1>Overview</h1>')));
 });
 
 test('a project can be created with a thumbnail', function () {
