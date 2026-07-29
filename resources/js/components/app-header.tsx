@@ -1,5 +1,14 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
+import {
+    FolderGit2,
+    History,
+    LayoutGrid,
+    Menu,
+    NotebookPen,
+    PenLine,
+    Search,
+    Sparkles,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -33,6 +42,11 @@ import { useCurrentUrl } from '@/hooks/use-current-url';
 import { useInitials } from '@/hooks/use-initials';
 import { cn, toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
+import { index as aiSearch } from '@/routes/ai-search';
+import { index as history } from '@/routes/history';
+import { index as projects } from '@/routes/projects';
+import { index as promptTemplates } from '@/routes/prompt-templates';
+import { index as proposalWriter } from '@/routes/proposal-writer';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
@@ -45,11 +59,34 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Portfolio',
+        href: projects(),
+        icon: FolderGit2,
+    },
+    {
+        title: 'AI Search',
+        href: aiSearch(),
+        icon: Sparkles,
+    },
+    {
+        title: 'Proposal Writer',
+        href: proposalWriter(),
+        icon: PenLine,
+    },
+    {
+        title: 'Prompt Templates',
+        href: promptTemplates(),
+        icon: NotebookPen,
+    },
+    {
+        title: 'History',
+        href: history(),
+        icon: History,
+    },
 ];
 
-const rightNavItems: NavItem[] = [
-    
-];
+const rightNavItems: NavItem[] = [];
 
 const activeItemStyles =
     'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100';
