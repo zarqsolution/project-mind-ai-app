@@ -12,10 +12,11 @@ import { index } from '@/routes/proposal-writer';
 
 type PageProps = {
     proposal: string | null;
+    jobDescription: string;
 };
 
 export default function ProposalWriterIndex() {
-    const { proposal } = usePage<PageProps>().props;
+    const { proposal, jobDescription } = usePage<PageProps>().props;
     const [copied, setCopied] = useState(false);
 
     const copyProposal = async () => {
@@ -62,6 +63,7 @@ export default function ProposalWriterIndex() {
                                         id="job-description"
                                         name="job_description"
                                         required
+                                        defaultValue={jobDescription}
                                         rows={18}
                                         placeholder="Paste the Upwork job description here…"
                                         className="min-h-96"

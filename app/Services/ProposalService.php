@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Ai\Agents\ProposalWriter;
+use App\Models\PromptHistory;
 use App\Models\PromptTemplate;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProposalService
 {
@@ -25,11 +27,40 @@ class ProposalService
     public function generate(string $jobDescription): array
     {
         $prompt = $this->buildPrompt($jobDescription);
+        $proposal = (new ProposalWriter)->prompt($prompt)->text;
+
+        PromptHistory::query()->create([
+            'job_description' => $jobDescription,
+            'used_prompt' => $prompt,
+            'generated_proposal' => $proposal,
+        ]);
 
         return [
-            'proposal' => (new ProposalWriter)->prompt($prompt)->text,
+            'proposal' => $proposal,
             'used_prompt' => $prompt,
         ];
+    }
+
+    /**
+     * Paginate the prompt history, newest first.
+     *
+     * @return LengthAwarePaginator<int, PromptHistory>
+     */
+    public function history(int $perPage = 10): LengthAwarePaginator
+    {
+        return PromptHistory::query()
+            ->latest('created_at')
+            ->orderByDesc('id')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
+    /**
+     * Delete the given prompt history entry.
+     */
+    public function deleteHistory(PromptHistory $history): void
+    {
+        $history->delete();
     }
 
     /**

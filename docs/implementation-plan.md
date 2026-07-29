@@ -83,11 +83,13 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Page: job description textarea (left) / generated proposal with copy button (right), spinner while generating
 - [x] Feature tests (`ProposalWriterTest` — 8 tests with `ProposalWriter::fake()` + `Embeddings::fake()`: generation, prompt contents, fallback, no-match note, validation, guests)
 
-## Phase 9 — Prompt History
+## Phase 9 — Prompt History ✅
 
-- [ ] `prompt_history` migration (job_description, used_prompt, generated_proposal)
-- [ ] Auto-save on generation; view / reuse / delete
-- [ ] Tests
+- [x] `prompt_history` migration (job_description, used_prompt, generated_proposal, created_at only) + `PromptHistory` model (`UPDATED_AT = null`) / factory
+- [x] Auto-save on every generation inside `ProposalService::generate()`; `history()` paginator (newest first) + `deleteHistory()`
+- [x] `PromptHistoryController` (index/destroy) replacing the placeholder history route
+- [x] History page: paginated cards (date, job/proposal excerpts), View dialog (job description, used prompt, proposal), Reuse link (prefills Proposal Writer via `job_description` query param), delete confirmation
+- [x] Feature tests (`PromptHistoryTest` — 6 tests: auto-save, newest-first listing, pagination, delete, reuse prefill, guests)
 
 ## Phase 10 — Dashboard Polish
 

@@ -20,6 +20,7 @@ class ProposalController extends Controller
     {
         return Inertia::render('proposal-writer/index', [
             'proposal' => $request->session()->get('proposal'),
+            'jobDescription' => $request->string('job_description')->toString(),
         ]);
     }
 

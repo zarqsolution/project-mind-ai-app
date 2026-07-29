@@ -4,6 +4,7 @@ use App\Http\Controllers\AISearchController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectEmbeddingController;
 use App\Http\Controllers\ProjectImageController;
+use App\Http\Controllers\PromptHistoryController;
 use App\Http\Controllers\PromptTemplateController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('proposal-writer', [ProposalController::class, 'index'])->name('proposal-writer.index');
     Route::post('proposal-writer', [ProposalController::class, 'store'])->name('proposal-writer.store');
     Route::resource('prompt-templates', PromptTemplateController::class)->only(['index', 'store', 'update', 'destroy']);
-    Route::inertia('history', 'history/index')->name('history.index');
+    Route::get('history', [PromptHistoryController::class, 'index'])->name('history.index');
+    Route::delete('history/{history}', [PromptHistoryController::class, 'destroy'])->name('history.destroy');
 });
 
 require __DIR__.'/settings.php';
