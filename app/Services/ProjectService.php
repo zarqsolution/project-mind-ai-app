@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\Project;
+use App\Models\ProjectImage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class ProjectService
 {
@@ -77,6 +79,7 @@ MARKDOWN;
     public function paginate(?string $search = null, int $perPage = 12): LengthAwarePaginator
     {
         return Project::query()
+            ->withCount('images')
             ->when($search, fn ($query) => $query->where('title', 'like', "%{$search}%"))
             ->latest('updated_at')
             ->paginate($perPage)
@@ -132,7 +135,43 @@ MARKDOWN;
     {
         $this->deleteThumbnail($project);
 
+        Storage::disk('public')->delete($project->images->pluck('image')->all());
+
         $project->delete();
+    }
+
+    /**
+     * Add an image to a project, placing it at the end of the gallery.
+     */
+    public function addImage(Project $project, string $title, UploadedFile $image): ProjectImage
+    {
+        return $project->images()->create([
+            'title' => $title,
+            'image' => $this->storePublicFile($image, 'projects/images'),
+            'sort_order' => ((int) $project->images()->max('sort_order')) + 1,
+        ]);
+    }
+
+    /**
+     * Delete a project image and its stored file.
+     */
+    public function deleteImage(ProjectImage $image): void
+    {
+        Storage::disk('public')->delete($image->image);
+
+        $image->delete();
+    }
+
+    /**
+     * Reorder a project's images to match the given list of image IDs.
+     *
+     * @param  list<int>  $orderedIds
+     */
+    public function reorderImages(Project $project, array $orderedIds): void
+    {
+        foreach ($orderedIds as $index => $imageId) {
+            $project->images()->whereKey($imageId)->update(['sort_order' => $index]);
+        }
     }
 
     /**
@@ -157,7 +196,21 @@ MARKDOWN;
 
     protected function storeThumbnail(UploadedFile $thumbnail): string
     {
-        return $thumbnail->store('projects/thumbnails', 'public');
+        return $this->storePublicFile($thumbnail, 'projects/thumbnails');
+    }
+
+    /**
+     * Store an uploaded file on the public disk.
+     */
+    protected function storePublicFile(UploadedFile $file, string $directory): string
+    {
+        $path = $file->store($directory, 'public');
+
+        if ($path === false) {
+            throw new RuntimeException('Unable to store the uploaded file.');
+        }
+
+        return $path;
     }
 
     protected function deleteThumbnail(Project $project): void

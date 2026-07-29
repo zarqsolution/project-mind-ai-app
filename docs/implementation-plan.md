@@ -34,12 +34,15 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Feature tests (`ProjectCrudTest` — 12 tests covering list, search, create, slug uniqueness, update, thumbnail replacement, delete, guests)
 - [x] Consistent page padding moved into the app sidebar layout so every module renders correctly
 
-## Phase 3 — Image Management
+## Phase 3 — Image Management ✅
 
-- [ ] `project_images` migration (project_id, title, image, sort_order)
-- [ ] `ProjectImage` model + factory, relationship on `Project`
-- [ ] Upload, delete, reorder, preview (unlimited images, each with title)
-- [ ] Feature tests
+- [x] `project_images` migration (project_id, title, image, sort_order, cascade delete)
+- [x] `ProjectImage` model + factory, `images()` relationship on `Project` (ordered by sort_order)
+- [x] Upload (dialog with title + live preview), delete (confirm dialog), reorder (up/down), big aspect-video previews on the detail page
+- [x] Image count badge on the project list cards
+- [x] Deleting a project also removes its image files from storage
+- [x] Feature tests (`ProjectImageTest` — 10 tests covering upload, append order, validation, ordered display, reorder, delete, scoped bindings, cascade, count, guests)
+- [x] Larastan now passes clean (fixed factory faker method, typed service payloads, storage return types, starter-kit `withTwoFactor` stub)
 
 ## Phase 4 — WYSIWYG Editor
 

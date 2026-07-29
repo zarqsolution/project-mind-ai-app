@@ -1,3 +1,14 @@
+export type ProjectImage = {
+    id: number;
+    project_id: number;
+    title: string;
+    image: string;
+    image_url: string;
+    sort_order: number;
+    created_at: string;
+    updated_at: string;
+};
+
 export type Project = {
     id: number;
     title: string;
@@ -7,6 +18,8 @@ export type Project = {
     description: string;
     created_at: string;
     updated_at: string;
+    images?: ProjectImage[];
+    images_count?: number;
 };
 
 export type PaginationLink = {

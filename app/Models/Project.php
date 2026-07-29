@@ -5,8 +5,10 @@ namespace App\Models;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string|null $thumbnail_url
+ * @property-read Collection<int, ProjectImage> $images
  */
 #[Fillable(['title', 'slug', 'thumbnail', 'description', 'embedding'])]
 class Project extends Model
@@ -43,14 +46,24 @@ class Project extends Model
     }
 
     /**
+     * Get the images for the project, ordered for display.
+     *
+     * @return HasMany<ProjectImage, $this>
+     */
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProjectImage::class)->orderBy('sort_order');
+    }
+
+    /**
      * Get the public URL for the thumbnail.
      *
      * @return Attribute<string|null, never>
      */
     protected function thumbnailUrl(): Attribute
     {
-        return Attribute::get(
-            fn (): ?string => $this->thumbnail
+        return Attribute::make(
+            get: fn (): ?string => $this->thumbnail
                 ? Storage::disk('public')->url($this->thumbnail)
                 : null,
         );

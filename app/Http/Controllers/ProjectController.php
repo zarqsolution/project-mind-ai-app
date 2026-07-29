@@ -46,7 +46,10 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request): RedirectResponse
     {
         $project = $this->projects->create(
-            $request->safe()->except('thumbnail'),
+            [
+                'title' => $request->string('title')->toString(),
+                'description' => $request->string('description')->toString(),
+            ],
             $request->file('thumbnail'),
         );
 
@@ -61,7 +64,7 @@ class ProjectController extends Controller
     public function show(Project $project): Response
     {
         return Inertia::render('projects/show', [
-            'project' => $project,
+            'project' => $project->load('images'),
         ]);
     }
 
@@ -82,7 +85,10 @@ class ProjectController extends Controller
     {
         $project = $this->projects->update(
             $project,
-            $request->safe()->except('thumbnail'),
+            [
+                'title' => $request->string('title')->toString(),
+                'description' => $request->string('description')->toString(),
+            ],
             $request->file('thumbnail'),
         );
 

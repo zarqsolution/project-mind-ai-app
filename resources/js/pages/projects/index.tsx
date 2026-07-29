@@ -144,12 +144,19 @@ export default function ProjectsIndex() {
                                             {excerpt(project.description)}
                                         </p>
 
-                                        <p className="text-xs text-muted-foreground">
-                                            Updated{' '}
-                                            {new Date(
-                                                project.updated_at,
-                                            ).toLocaleDateString()}
-                                        </p>
+                                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                                            <span>
+                                                Updated{' '}
+                                                {new Date(
+                                                    project.updated_at,
+                                                ).toLocaleDateString()}
+                                            </span>
+
+                                            <span className="flex items-center gap-1">
+                                                <ImageIcon className="size-3.5" />
+                                                {project.images_count ?? 0}
+                                            </span>
+                                        </div>
                                     </CardContent>
                                 </Card>
                             </Link>

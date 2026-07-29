@@ -1,6 +1,7 @@
 import { Form, Head, Link, usePage } from '@inertiajs/react';
 import { ImageIcon, Pencil, Trash2 } from 'lucide-react';
 import ProjectController from '@/actions/App/Http/Controllers/ProjectController';
+import { ProjectImageGallery } from '@/components/project-image-gallery';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -123,6 +124,8 @@ export default function ProjectsShow() {
                         {project.description}
                     </div>
                 </div>
+
+                <ProjectImageGallery project={project} />
             </div>
         </>
     );
