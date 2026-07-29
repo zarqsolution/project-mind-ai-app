@@ -22,16 +22,17 @@ Phased plan derived from `docs/project-srs.md`. Each phase must be fully complet
 - [x] Placeholder pages + named routes for each module (auth protected)
 - [x] Feature tests for each page route
 
-## Phase 2 — Portfolio CRUD
+## Phase 2 — Portfolio CRUD ✅
 
-- [ ] `projects` migration (title, slug, thumbnail, description LONGTEXT, embedding nullable)
-- [ ] `Project` model + factory + seeder
-- [ ] `ProjectService`, `ProjectController` (resource), Form Requests
-- [ ] Project list page (thumbnail, title, short description, image count, updated date, search by title)
-- [ ] Create / Edit pages (title, thumbnail upload, description)
-- [ ] Project details page (info, images, edit/delete/generate-embedding buttons)
-- [ ] In Create , Edit and Detail pages the images should load big or thumnail with fear size so can quickly lookk whats going on
-- [ ] Feature tests
+- [x] `projects` migration (title, slug, thumbnail, description LONGTEXT, embedding nullable)
+- [x] `Project` model + factory + seeder
+- [x] `ProjectService`, `ProjectController` (resource), Form Requests
+- [x] Project list page (thumbnail, title, short description, updated date, search by title) — image count arrives with Phase 3
+- [x] Create / Edit pages (title, thumbnail upload with live preview, description preloaded with template)
+- [x] Project details page (info, edit/delete buttons; images + generate-embedding buttons arrive in Phases 3/5)
+- [x] In Create, Edit and Detail pages the images load big (aspect-video previews, large detail hero) for a quick look
+- [x] Feature tests (`ProjectCrudTest` — 12 tests covering list, search, create, slug uniqueness, update, thumbnail replacement, delete, guests)
+- [x] Consistent page padding moved into the app sidebar layout so every module renders correctly
 
 ## Phase 3 — Image Management
 
