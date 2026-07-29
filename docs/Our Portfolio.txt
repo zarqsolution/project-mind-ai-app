@@ -1,0 +1,1065 @@
+﻿Interloper Ecommerce APP
+Interloper Ecommer App
+
+
+Google drive link for images
+https://drive.google.com/drive/folders/1JgGrfHMhAQNhGN3Gs3po6kn2igj5VkEd?usp=sharing
+
+
+This project is built with Laravel, Livewire, and PostgreSQL, providing a robust and scalable full-stack web application.
+Key features include:
+* Dynamic frontend powered by Laravel Livewire for a seamless user experience.
+* PostgreSQL database for reliable and high-performance data management.
+* Comprehensive product attribute management with support for complex product configurations.
+* Image fetching and synchronization from eBay to streamline product imports.
+* Complete backend control over frontend content and functionality.
+* Menu and navigation management.
+* Dynamic page creation and content management.
+* Customer review moderation and management.
+* Order processing and management system.
+* Product catalog management with categories, attributes, and media.
+* Administrative dashboard with centralized control over all website operations.
+* Feature-rich architecture designed for scalability, maintainability, and efficient e-commerce management.
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+UploadMyProducts
+UploadMyProduct
+Google Drive Link for images
+
+
+https://drive.google.com/drive/folders/15jAl5AbKRtMSHVGKex49H4GAOT6e5uNY?usp=sharing
+
+
+We developed a powerful Unified Multi-Platform (UMP) product management solution that enables businesses to upload product data once and automatically distribute it across multiple e-commerce marketplace platforms.
+
+
+This system is designed to simplify large-scale product catalog management by eliminating repetitive manual uploads and ensuring data consistency across all connected channels.
+
+
+Key Features
+
+
+- Single Product Entry System Add product details once and sync across multiple platforms.
+- Multi-Platform Synchronization Automatic product distribution to connected marketplaces.
+- Category Mapping & Attribute Alignment – Smart mapping to maintain platform compatibility.
+- Image Management & Optimization: Centralized image handling with background processing.
+- Inventory Synchronization: Real-time stock updates across channels.
+- Performance Optimized Architecture: Background queue processing to prevent system slowdown.
+- Scalable Integration Framework: Easily extendable to support new sales platforms in the future.
+- Secure & Maintainable Code Structure Built with best practices for long-term production use.
+
+
+Technical Expertise Used
+
+
+- Custom backend module development
+- API integration and webhook communication
+- Database optimization for high-volume product data
+- Asynchronous processing for large catalog uploads
+- Marketplace integration architecture
+
+
+This project demonstrates our expertise in building enterprise-level multi-channel e-commerce automation systems that help businesses manage inventory and product listings efficiently.
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+Freightanywhere
+FreightAnywhere – Transportation Management System (TMS)
+
+
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1faGIANSIIW2yCKBYqzxPV6S-ZbkOd5I_?usp=drive_link
+
+
+FreightAnywhere is a full-cycle, web-based TMS we built for freight brokerages and carriers, covering the entire life of a load in one platform: quoting, order entry, carrier sourcing, dispatch, live GPS tracking, billing, carrier settlement, and invoice auditing.
+
+
+Key modules: Shipment board with multi-filter search, saved views, and one-click actions (quotes, orders, load board posting, invoicing, dispatch reports). Order workspace with a visual lifecycle pipeline, built-in customer credit control, and a Rate Maker with Carrier Target Pay and Max Buy Rate for margin protection. Carrier management and a Pallet Rate System. Live tracking on Trimble Maps with color-coded statuses (Delivered, In-Transit, Covered, Late, Missing) and automated tracking logs. A complete accounting back office: AR aging, customer statements, carrier settlements with deduction management, balance sheet, income statement, commission reports, and factoring support. An email-native invoice auditing inbox with team assignment and status workflow, extended by an AI-assisted auditing layer (Tech-AI Auditing, Beta).
+
+
+What sets it apart: one record from quote to cash with no re-keying, credit enforcement at the point of booking, margin guardrails baked into rating, real-time visibility, and AI-powered audit, replacing the usual stack of a TMS, tracking tool, accounting software, and email folders with a single application.
+
+
+Special Features & Integrations
+
+
+- DAT Load Board integration – post loads to DAT directly from the shipment board, with Posted and Reserved status badges synced back to the order grid. No re-keying between the TMS and the load board.
+- Trimble Maps integration – commercial truck routing, live GPS position mapping, and mileage calculation (Run Miles) built into tracking and rating.
+- EAL connectivity – one-click "Send Load to EAL" from the order screen for instant carrier sourcing.
+- Email-native invoice auditing – carrier invoices flow by email straight into an audit inbox with team assignment, To Do / In Progress / In Review / Done statuses, and full reply/forward without leaving the platform.
+- Tech-AI Auditing (Beta) – AI-assisted verification of invoices and accounting data layered on top of the manual audit workflow.
+- Credit enforcement at booking – customer credit limit, used, and available balance shown on the order itself, blocking over-extension before it happens.
+- Margin guardrails – Carrier Target Pay and Max Buy Rate caps in the Rate Maker protect margin on every load.
+- Full back-office accounting – AR aging, carrier settlements with deductions, balance sheet, income statement, commissions, and a dedicated factoring companies module, all inside the TMS.
+- API Settings module – open integration layer for connecting external systems, load boards, and tracking providers.
+- Automated tracking logs – GPS check-ins captured automatically with Late Tracking and Missing Tracking alerts.
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+________________
+  
+
+
+
+
+MultiFeedInventory
+MultiFeedInventory
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1ExPfaiWFO1fVFGalto0P5yZ6VbYrD123?usp=sharing
+
+
+We developed an enterprise-level dropshipping integration and automation platform for Interloper Inc., designed to connect distributors, normalize product data, and automate inventory and order workflows across the system.
+
+
+The platform serves as a centralized ecosystem for managing supplier integrations and maintaining consistent product information across multiple data sources. The architecture is built for scalability, security, and high-speed data processing to support growing product catalogs and distributor networks.
+
+
+Key features implemented:
+
+
+- Advanced Admin Dashboard: Provides a real-time business overview, including product status, distributor activity, synchronization logs, and system health monitoring
+- Distributor Management Module: Allows onboarding, configuration, and monitoring of multiple distributors and supplier accounts
+- Data Normalization Engine: Automatically standardizes product titles, attributes, pricing structure, and inventory format from different sources
+- Product Lifecycle Management: Supports product creation, updating, deletion, and synchronization between distributors and the central database
+Reporting & Analytics System: Generates performance reports, comparison insights, and operational statistics for decision-making
+- Compare Data Module: Enables validation between distributor data, local database records, and live inventory feeds
+- Shipping Dimension Management: Handles product weight, length, width, height, and logistics rules for accurate shipping calculations
+- Meta Data & SEO Management: Provides tools to update product metadata, descriptions, and search optimization fields
+- Bulk File Upload System: Supports CSV, Excel, or structured data imports for large-scale product and inventory updates
+- Pull Settings Automation: Enables scheduled or manual data synchronization from distributor APIs or data sources
+- API Integration Layer: Secure API configuration panel for connecting external systems, distributors, and third-party services
+- Security Implementation: Includes authentication, role-based access control, and secure data transmission protocols
+
+
+This project demonstrates our advanced expertise in building enterprise dropshipping platforms, data orchestration systems, API-driven architecture, and high-performance eCommerce automation solutions.
+* 
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+Pa Logistic
+PA Transport – Logistics & 
+Transportation Management System
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1n6AesjfK_W9ZUlKVS73IRKe8221_LLh4?usp=drive_link
+
+
+A comprehensive logistics and transportation management platform built to streamline load operations, dispatching, carrier management, invoicing, shipment tracking, financial reporting, and customer communication. The system centralizes the complete freight lifecycle from load creation to payment collection while integrating with third-party logistics and tracking services.
+Key Features
+* Logistics dashboard with real-time KPIs and operational insights.
+* Complete load management with multi-stop pickup & delivery support.
+* Dispatch planning and shipment assignment.
+* Live shipment tracking with MacroPoint integration.
+* Carrier management with MCP (MyCarrierPackets) integration.
+* Customer, carrier, and invoice management.
+* Automated Accounts Receivable tracking and payment reminders.
+* Email reminder system with reply tracking and classification.
+* Financial reports, income sheets, profitability, and expense management.
+* Multi-division operational reporting and analytics.
+* n8n workflow integration for automated data processing.
+* CSV/Excel import & export functionality.
+* Advanced filtering, search, reporting, and dashboard analytics.
+* Secure admin portal with role-based operations.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+[a]
+Transaction Categorization to Expense & Skipping & Tagging Processing Engine
+
+
+We have implemented a complex & robust transaction processing engine. We can create our custom rules, like what to do with transactions and then we process the transaction on the basis of those rules. We skip the transaction from processing, we mark it for review, we categorize the expense and we split the transaction amount categories to the expenses and we tag the expenses for special cases. 
+
+
+https://dispatch.patransportca.com/banking/transactions
+
+
+  
+  
+  
+
+
+________________
+Plaid Integration
+
+
+We integrated the plaid to PALogistic App. We log in and connect to multiple bank accounts from different banks and We sync all the transactions with raw data from plaid to our system with custom actions and cronjob.
+
+
+https://dispatch.patransportca.com/banking/accounts
+
+
+  
+
+
+
+
+
+  
+
+________________
+
+
+Carrier and Customer Portal
+
+
+We have built fully separated customer and carrier portals. Where customers can see detail and current progress and tracking of their shipments and Carrier can See details of the Load and Upload invoice and BOL and rate confirmation and Payment Proof from their portal.
+
+
+  
+
+
+
+________________
+Portal Has it own admin Section
+Portal has its own admin section with user managements and impersonation
+
+
+  
+  
+  
+________________
+
+Document Verification Feature
+We have built a robust document verification with AI feature which checks invoices and POD upload by the carrier with our system by the AI and generates a comprehensive report related to the documents.
+  
+
+  
+________________
+
+Documents Split and Crop Tool
+We implemented a document split and crop tool that 
+  
+  
+  
+
+
+
+  
+
+Petrol Pump Management System
+Petrol Pump Management System
+
+
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1l_9UmDVb41Gt_oManuc9_doR0eR09Stf?usp=drive_link
+
+
+Summary:
+
+
+Gas Station Management is a Laravel-based web application that streamlines fuel station operations including pumps, meter readings, sales, pricing, shifts, customers and financials providing operational control, inventory reconciliation, and audit ready reports.
+
+
+Features
+
+
+* Fuel & Inventory: Track fuel types, receipts, and stock movements.
+* Pump & Meter Management: Manage pumps, nozzles, meter readings and pump daily records.
+* Pricing: Maintain Price History and apply historical pricing per fuel type.
+* Sales & Transactions: Record sales, payments, fuel dispensing logs, and customer transactions.
+* Shifts & Attendance: Manage shifts, shift types, employee attendance, and working hours.
+* Customers & Fleet: Customer, driver, and vehicle records for fleet transactions.
+* Financials & Expenses: Expenses, petty cash, employee advances and reporting.
+* Reporting & Export: Generate exportable reports and PDF exports for reconciliation and audits.
+* Role-Based Access & Security: Authentication and permissions for admin and operator roles.
+* Admin UI: Reactive Livewire/Blade interfaces for fast in-browser management.
+* Testing: Pest/PHPUnit test support for quality assurance.
+
+
+
+Tech Stack
+
+
+* Backend: PHP with Laravel (Eloquent ORM).
+* Frontend: Blade + Livewire, assets built with Vite/esbuild.
+* Packages/Tools: Laravel Fortify (auth), Livewire, DomPDF (PDFs), Composer, NPM.
+* Database: SQLite.
+* Dev/Build: artisan, composer, npm/vite workflows.
+
+
+
+
+https://gas-station.zarqsolution.com/login 
+
+Login Credintials 
+User:”admin@gsms.local” 
+Password:”password”
+
+
+  
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+QuickJHA
+Empowers safety professionals to generate comprehensive Job Hazard Analysis (JHA), Activity Hazard Analysis (AHA), and Job Safety Analysis (JSA) documents using AI. 
+
+
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1GcmSr0tcJMU6VkkI56It6gAnb39O9TaZ?usp=drive_link
+
+Project Summary :
+
+QuickJHA is an AI-powered SaaS platform that generates professional Job Hazard Analysis (JHA), Activity Hazard Analysis (AHA), and Job Safety Analysis (JSA) documents. It applies country-specific safety regulations (such as OSHA, HSE, and other international standards) to produce compliant safety documentation. Each document type is available as a separate paid service. 
+
+Features
+
+
+* AI-generated JHA, AHA, and JSA documents in 30 seconds
+* Pay-per-document pricing (no subscription)
+* Stripe and PayPal payment integration
+* PDF and editable Word downloads
+* Document preview before purchase
+* In-browser editing of generated documents
+* Multi-regulation compliance (OSHA, Cal/OSHA, USACE, HSWA, HSE, and more)
+* RAC-based risk scoring in documents
+* Company logo and branded formatting
+* Draft save & resume during document creation
+* Professional review upsell with expert revision
+* User dashboard to manage documents
+* Google OAuth and email/password authentication
+* Role-based access (user / admin)
+* Admin pricing control (regular + sale prices)
+* Admin AI prompts and template customization
+* Blog CMS for content marketing
+* Email campaigns and newsletter subscribers
+* SEO manager for page metadata
+* Contact form and transactional emails
+* File attachments to improve AI document context
+* Email verification for new accounts
+* Admin dashboard with revenue, usage, and document stats
+* AI token & cost tracking per document
+* Secure review links with admin impersonation for professional reviews
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://quickjha.com/
+
+
+Username = admin.quickjha@gmail.com
+Password = Admin@QuickJHA786
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+Email Campaigns  Create, schedule, and send personalized email campaigns to engage customers and drive conversions
+
+  
+
+
+
+  
+  
+. 
+C-Promoter
+Empowering Field Marketing and Retail Promotion with Intelligent Tech 
+
+Project Summary
+Promoter Management System (Web & Mobile App) is a field force automation platform designed to manage promoters, retail store visits, attendance, and project execution across multiple regions. It enables administrators to assign projects, monitor field activities in real time, track GPS-based visits, and generate detailed reports to improve operational efficiency.
+Mobile App Summary
+The Promoter Mobile App allows field promoters to manage their daily tasks, check in and out of assigned stores using GPS, upload photos, submit visit reports, and communicate activity updates instantly. It helps ensure accurate attendance, better productivity, and real-time monitoring.
+
+
+
+
+Features
+
+
+* User Login & Role Management
+* Promoter Dashboard
+* Daily Visit Planning
+* GPS-Based Check-In / Check-Out
+* Store Visit Tracking
+* Photo Upload (Start & End Visit)
+* Live Attendance Monitoring
+* Working Hours Calculation
+* Route & Location Verification
+* Project & Client Management
+* Promoter Assignment
+* Store & Retail Chain Management
+* Visit Status Tracking (Planned, In Progress, Completed)
+* Real-Time Reports & Analytics
+* Country, Region & City Filters
+* Product & Campaign Management
+* Web Admin Dashboard
+* Mobile App for Field Promoters
+* Exportable Reports
+* Secure Cloud-Based Data Management
+
+
+
+
+
+
+
+
+
+
+https://cpromoter.catalist-me.com/login
+
+
+Username = cpromoteradmin@bp-me.com
+Password = Aa123456
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+  
+  
+
+
+  
+
+StockPro
+StockPro Inventory & Sales Management System
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1Bfdfmgb2ifLChO5e3M54fdPXz_oXWTqx?usp=drive_link
+
+
+
+
+Project Summary
+A complete Inventory Management and Point of Sale (POS) system for retail and wholesale businesses. It covers daily sales, purchases, stock control, customer and supplier accounts, expenses, returns, and business reports all from one dashboard. Includes POS billing, invoice generation, batch and expiry tracking, due payment handling, multi-language support, and automated cloud backup. . 
+Key Features
+* Point of Sale (POS)
+* Invoice Generator
+* Bill & Invoice Printing
+* Stock In (Purchasing)
+* Stock Out (Sales)
+* Product Returns
+* Product Management
+* Category Management
+* Multi-Unit Support
+* Batch & Expiry Tracking
+* Low Stock Alerts
+* Customer Management
+* Supplier Management
+* Customer & Supplier Ledgers
+* Expense Management
+* Profit Report
+* Sales & Inventory Reports
+* Due Payment Handling
+* Dashboard Analytics
+* Multi-Language Support
+* Shop Settings
+* Google Drive Backup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://pos.zarqsolution.com/
+
+
+Username = admin@admin.com
+Password = password
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Google Cloud Backup
+
+StockPRO Can Manage DataBase Backup Using Cloud Backup Functionality
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Multi Language 
+
+
+In stockPro We Can Manage Multi-languages.
+  
+
+
+
+
+
+Hawk Sports
+Hawk Sports – Sports Equipment eCommerce Website
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1AkZiZEWGJBkD0UBuAlLCNq_zQRRAsb4D?usp=drive_link
+Hawk Sports is a WordPress WooCommerce eCommerce website that sells premium sports equipment, including boxing gear, sports balls, hockey equipment, martial arts products, and motorbike clothing. Customers can browse products, compare items, manage wishlists, and securely purchase products online. 
+Key Features
+* WooCommerce Store
+* User Login & Registration
+* Product Categories
+* Product Search
+* Product Variations (Size/Color)
+* Shopping Cart & Checkout
+* Wishlist & Compare
+* Product Reviews
+* Discount & Sale Products
+* Newsletter Subscription
+* Responsive Design
+* Order Management
+Payment Methods
+* PayPal
+* Stripe
+* Visa
+* Mastercard
+* Apple Pay
+* Google Pay (via Stripe)
+
+
+
+
+https://hawk-sports.com/
+
+
+https://hawk-sports.com/wp-admin
+
+
+Username = aliraza.fhkiel@outlook.com
+Password = 12qwas@Pakistani
+
+
+  
+
+Tech Logistics
+Complete Freight Management Spend Solution 
+
+
+Tech Logistics is a premier provider of innovative transportation management solutions, leveraging AI-powered auditing and seasoned carrier negotiation expertise to maximize cost savings for businesses worldwide.
+https://www.techlogistics.com/
+  
+
+
+
+
+
+
+
+College Bound Movers
+Hampshire's #1 Rated Full-Service Moving Company 
+
+
+For more than 30 years, College Bound Movers has been providing service beyond expectation to customers throughout New Hampshire, New England, and beyond.
+https://collegeboundmovers.com/
+  
+
+
+
+
+
+
+
+Iowa Ortho Healthcare Platform
+Delivering Advanced Orthopedic Care Through a Seamless Digital Experience 
+
+
+The Iowa Ortho Healthcare Platform is a fully responsive and user-centric web solution built for a leading orthopedic care provider. The platform focuses on enhancing patient experience by providing easy access to services, providers, locations, and healthcare resources. It streamlines appointment booking, improves navigation for patients of all age groups, and ensures seamless access to important medical information. The system is designed to handle multiple providers, specialties, and locations while maintaining high performance and scalability.
+https://www.iowaortho.com/
+  
+
+
+
+
+
+
+
+Star Medical & Research Center
+Modernizing Healthcare with Intelligent Management Solutions 
+
+
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1QL0VKVnFyUgr1fgNiH_4VIv9M62nEZB5?usp=drive_link
+
+Hospital Management System (Web Application) is a complete healthcare management solution designed to streamline hospital and clinic operations. It helps manage patients, doctors, appointments, pharmacy, laboratory, radiology, billing, and employee records from a centralized dashboard. The system improves workflow efficiency, reduces paperwork, and provides secure access to medical and financial records.
+Online Patient Test Report Portal
+Patients can securely view, download, and print their laboratory test reports directly from the website. 
+Database Backup & Restore System
+Take Database Backup: Generate and download a complete database backup.
+Upload Database Backup: Upload a backup file to restore or update the live database.
+
+
+
+
+Features
+
+
+* Interactive Admin Dashboard
+* Patient Registration & Management
+* OPD (Out Patient Department) Management
+* IPD (In Patient Department) Management
+* Doctor Management
+* Employee & Staff Management
+* Department & Role Management
+* Appointment Scheduling
+* Patient Medical History & Logs
+* Laboratory Test Management
+* Radiology Management
+* Pharmacy & Medicine Inventory
+* Medicine Categories
+* Medicine Purchase & Sales Management
+* Stock & Quantity Tracking
+* Expiry Date Monitoring
+* Reorder Level Alerts
+* Invoice & Billing Management
+* Cumulative Invoice Reports
+* Health Services Management
+* Contact & Inquiry Management
+* Database Export (DB Export)
+* Trash & Recovery Module
+* User Authentication & Secure Login
+* Reports & Analytics Dashboard
+
+
+
+
+
+
+https://www.starmedicalresearchcenter.com/admin/dashboard
+
+
+Username = admin@admin.com
+Password = password
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+SpyCameraCCTV
+SpyCameraCCTV – CCTV & Security Solutions eCommerce Platform 
+
+SpyCameraCCTV is an online eCommerce platform that offers CCTV systems, spy cameras, wireless security cameras, and surveillance accessories for homes, businesses, farms, and wildlife monitoring. 
+
+
+Key Features
+* User Login
+* Product Categories
+* Product Search
+* Shopping Cart
+* CCTV & Spy Cameras
+* Wireless CCTV Systems
+* Secure Online Payments
+* Product Reviews
+* Buyer's Guide
+* Help & Customer Support
+Payment Methods
+* Visa
+* Mastercard
+* PayPal
+* Google Pay
+* Apple Pay
+* American Express
+
+
+https://www.spycameracctv.com/
+  
+
+
+
+
+
+shipcl
+The Future of Intelligent Freight & Shipping Management 
+Shipcl is a next-generation logistics platform designed to simplify the complexities of global and domestic shipping.
+
+
+
+
+Triple J Furniture
+0Triple J Furniture – Furniture eCommerce Website 
+Triple J Furniture is an online furniture store that offers a wide range of living room, dining, bedroom, home office, and outdoor furniture. Customers can browse products, place orders securely, and enjoy Australia-wide delivery.
+Key Features
+* User Login & Registration
+* Product Categories
+* Product Search
+* Shopping Cart & Checkout
+* Secure Online Payments
+* Order Management
+* Product Reviews
+* Wishlist
+* Contact & Support
+* Newsletter Subscription
+Payment Methods
+* Visa
+* Mastercard
+* American Express
+* PayPal
+* Zip Pay
+* Shop Pay
+
+
+
+
+https://triplejfurniture.com.au/  
+MarsTranslation
+MarsTranslation – Professional Translation Services Platform 
+MarsTranslation is an online translation platform that provides professional human translation, localization, interpretation, and AI-powered language services. It helps businesses translate documents, websites, software, videos, and other digital content into 230+ languages.
+Key Features
+* User Registration & Login
+* Online Translation Order System
+* Document Translation
+* Website & Software Localization
+* Video Translation & Subtitling
+* Interpretation Services
+* AI Translation Services
+* Translation Project Management
+* Real-Time Project Tracking
+* Translation Memory (TM)
+* Quality Assurance (QA)
+* Online Price Calculator
+* Multi-Language Support (230+ Languages)
+* Customer Support & Consultation
+
+
+https://www.marstranslation.com/
+  
+
+LiveWaves
+LiveWaves Social Networking & Live Streaming Platform Web + Mobile App
+
+
+
+
+
+
+
+
+https://www.starmedicalresearchcenter.com/admin/dashboard
+
+
+Username = prophetdre@gmail.com
+Password = 123456
+  
+
+Price History Application
+Smart Price  Intelligence Comparison Platform 
+
+
+Google Drive Link for Images
+https://drive.google.com/drive/folders/1hMtigO6uRzIjclBudPC6krpEW7SXLa_Q?usp=drive_link
+
+
+Project Summary:
+
+
+Price History Application is a full-stack App that tracks Amazon, Flipkart and other marketplaces prices and helps users buy at the right time. It shows price history, deal scores, and buy-or-wait recommendations from real product data, with hot deals, search, price alerts, store comparison, and an admin panel for product imports, and Keepa API integration, it’s designed for scalable, real-world price tracking with affiliate earning strategy. 
+
+
+Features Summary 
+
+* Product detail page with gallery, pricing, ratings, and affiliate buy links
+* Interactive price history chart with multiple time ranges (24H to Max)
+* Deal Scanner with buy/wait/avoid gauge and price statistics
+* Hot Deals page with category, price, discount, store, and search filters
+* Category pages with sort options and sidebar filters
+* Search with live suggestions and trending queries
+* Cross-store price comparison on product pages
+* Wishlist to save products and manage them from the user dashboard
+* Price alerts with email and WhatsApp notifications when target price is hit
+* WhatsApp alert integration via UltraMsg for price drop confirmations and updates
+* User dashboard for wishlist, price alerts, and tracked products
+* Price alert presets (6M low, 10% drop, 20% drop)
+* Authentication with Google/Facebook login, profile, 2FA, and security settings
+* Keepa Excel bulk import via queued background jobs
+* Keepa API sync to auto-refresh stale Amazon India prices
+* Price history engine for storing and serving chart data
+* Deal scoring logic for buy/wait recommendations
+* Admin panel for products, categories, brands, marketplaces, and SEO
+* SEO system with auto generated intelligent meta content, keywords, and XML sitemap with best SEO rules and regulations
+* Analytics for page views and affiliate click tracking
+* Homepage with hot deals, top price drops, category tabs, and live price ticker
+* Full Responsive
+
+
+https://price-history.zarqsolution.com/
+
+
+Username = admin@admin.com
+Password:Pricehistory01@
+
+
+
+
+
+
+  
+
+  
+  
+  
+
+
+
+Backend Images 
+
+          
+SSHR
+HR  Management System (SSHR)
+
+Project Summary
+
+An SSHR (Smart Human Resource) system that streamlines HR operations by managing employee profiles, payroll, attendance, check-in/check-out, leave requests, insurance requests, and document records in one platform. It includes a web-based admin panel and a mobile application, enabling employees to access HR services and record attendance from anywhere. The system automates routine HR processes, improving efficiency, accuracy, and workforce management. 
+
+
+Features:
+* Payroll Management
+* Attendance Tracking
+* Check-In / Check-Out
+* Leave Management
+* Leave Requests & Approval
+* Loan Requests & Management
+* Loan Installment Tracking
+* Insurance Requests & Management
+* Employee Documents
+* Announcements & Notices
+* HR Dashboard
+* Employee Dashboard
+* Detailed Reports & Analytics
+* Salary Slips Requests 
+* Attendance Reports
+* Leave Reports
+* Payroll Reports
+* User Profile Management
+* Mobile Application
+* Admin Backend Panel
+* Notifications & Alerts
+* Department & Designation Management
+* Employee Search & Filters
+* Secure Authentication & Access Control
+
+
